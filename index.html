@@ -6,6 +6,11 @@
     <title>Генератор аруко карты</title>
 </head>
 <body>
+    <textarea name="" id="test_out"></textarea>
     <script src="./genmap.js"></script>
+    <script>
+        let map = aruco_gen_str(0.335, 10, 10, 1, 1, 0)
+        document.getElementById('test_out').innerHTML = map
+    </script>
 </body>
 </html>
