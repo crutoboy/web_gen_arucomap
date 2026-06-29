@@ -6,11 +6,37 @@
     <title>Генератор аруко карты</title>
 </head>
 <body>
-    <textarea name="" id="test_out"></textarea>
+    <div><label for="length">length: </label><input type="number" name="length" id="length" value="0.335"></div>
+    <div><label for="markers_x">markers_x: </label><input type="number" name="markers_x" id="markers_x" value="10"></div>
+    <div><label for="markers_y">markers_y: </label><input type="number" name="markers_y" id="markers_y" value="10"></div>
+    <div><label for="dist_x">dist_x: </label><input type="number" name="dist_x" id="dist_x" value="1"></div>
+    <div><label for="dist_y">dist_y: </label><input type="number" name="dist_y" id="dist_y" value="1"></div>
+    <div><label for="first">first: </label><input type="number" name="first" id="first" value="0"></div>
+    <div><label for="x0">x0: </label><input type="number" name="x0" id="x0" value="0"></div>
+    <div><label for="y0">y0: </label><input type="number" name="y0" id="y0" value="0"></div>
+    <div><label for="bottom_left">bottom_left: </label><input type="checkbox" name="bottom_left" id="bottom_left"></div>
+    <div><button id="generate_button">generate</button></div>
+    <textarea name="" id="test_out" rows="20" cols="70"></textarea>
+
     <script src="./genmap.js"></script>
     <script>
-        let map = aruco_gen_str(0.335, 10, 10, 1, 1, 0)
-        document.getElementById('test_out').innerHTML = map
+        document.getElementById('generate_button').addEventListener('click', () => {
+            let length = document.getElementById('length').valueAsNumber
+            let first = document.getElementById('first').valueAsNumber
+            let x0 = document.getElementById('x0').valueAsNumber
+            let y0 = document.getElementById('y0').valueAsNumber
+            let markers_x = document.getElementById('markers_x').valueAsNumber
+            let markers_y = document.getElementById('markers_y').valueAsNumber
+            let dist_x = document.getElementById('dist_x').valueAsNumber
+            let dist_y = document.getElementById('dist_y').valueAsNumber
+            let bottom_left = document.getElementById('bottom_left').checked
+
+            let map = aruco_gen_str(
+                length, markers_x, markers_y, dist_x, dist_y,
+                first, x0, y0, bottom_left
+            )
+            document.getElementById('test_out').innerHTML = map
+        })
     </script>
 </body>
 </html>
