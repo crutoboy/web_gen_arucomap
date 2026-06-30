@@ -46,15 +46,21 @@
                 <label class="form-label" for="y0">y первого маркера: </label>
                 <input class="form-control" type="number" id="y0" value="0">
             </div>
-            
+
         </div>
 
-        <div class="m-2 d-flex align-items-center">
-                <div class="form-switch align-middle">
-                    <input class="form-check-input" type="checkbox" name="bottom_left" role="switch" id="bottom_left">
-                    <label class="form-check-label" for="bottom_left">bottom_left</label>
-                </div>
+        <div class="m-2">
+            <div>
+                <label class="form-label">с какого угла начинается нумерация: </label>
             </div>
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                <input type="radio" class="btn-check" name="is_bottom_left" id="top_left" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="top_left">--top-left</label>
+                <input type="radio" class="btn-check" name="is_bottom_left" id="bottom_left" autocomplete="off">
+                <label class="btn btn-outline-primary" for="bottom_left">--bottom-left</label>
+            </div>
+        </div>
 
         <div class="m-2">
             <button id="generate_button" class="btn btn-primary">generate</button>
@@ -93,7 +99,7 @@
             let content = document.getElementById('test_out').innerHTML
             let filename = 'map.txt'
 
-            let blob = new Blob([content], {type: "text/plain"})
+            let blob = new Blob([content], { type: "text/plain" })
             let url = window.URL.createObjectURL(blob);
 
             let a = document.createElement("a")
