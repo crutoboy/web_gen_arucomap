@@ -1,4 +1,4 @@
-function aruco_gen_str(
+export function aruco_gen_str(
     length, markers_x, markers_y, dist_x, dist_y,
     first=0, x0=0, y0=0, bottom_left=false
 ){
