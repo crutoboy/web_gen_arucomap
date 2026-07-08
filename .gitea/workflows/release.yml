@@ -35,7 +35,7 @@ jobs:
         with:
           files: dist.zip
         env:
-          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+          GITEA_TOKEN: ${{ secrets.GITEATOKEN }}
 
       - name: Release to GitHub
         uses: softprops/action-gh-release@v2
@@ -47,4 +47,4 @@ jobs:
           prerelease: ${{ github.event.release.prerelease }}
           files: dist.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
