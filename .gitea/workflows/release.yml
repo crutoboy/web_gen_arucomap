@@ -45,7 +45,7 @@ jobs:
           body: ${{ github.event.release.body }}
           draft: ${{ github.event.release.draft }}
           prerelease: ${{ github.event.release.prerelease }}
-          files: dist.zip
-          overwrite: true
+          # files: dist.zip
+          # overwrite: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
