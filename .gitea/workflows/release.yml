@@ -40,12 +40,14 @@ jobs:
       - name: Release to GitHub
         uses: softprops/action-gh-release@v2
         with:
+          github_server_url: https://github.com
+          repository: crutoboy/web_gen_arucomap
           tag_name: ${{ github.event.release.tag_name }}
           name: ${{ github.event.release.name }}
           body: ${{ github.event.release.body }}
           draft: ${{ github.event.release.draft }}
           prerelease: ${{ github.event.release.prerelease }}
-          # files: dist.zip
+          files: dist.zip
           # overwrite: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
