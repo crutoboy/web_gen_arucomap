@@ -14,8 +14,8 @@ function enable_dark_mode(is) {
     document.documentElement.setAttribute('data-bs-theme', 'light')
   }
 }
-console.log(isDarkMode)
-enable_dark_mode(isDarkMode === true || (isDarkMode === null && darkModeMql && darkModeMql.matches))
+
+enable_dark_mode(isDarkMode === "true" || (isDarkMode === null && darkModeMql && darkModeMql.matches))
 
 themeSwitch.addEventListener('click', () => {
   enable_dark_mode(themeSwitch.checked)
