@@ -1,0 +1,56 @@
+name: Release 
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Archive dist
+        run: |
+          cd dist
+          zip -r ../dist.zip ./*
+
+      - name: Upload assets to Gitea Release
+        uses: https://gitea.com/actions/gitea-release-action@v1
+        with:
+          files: dist.zip
+        env:
+          GITEA_TOKEN: ${{ secrets.GITEATOKEN }}
+
+      - name: Deploy
+        run: |
+          curl -X POST ${{ secrets.DEPLOY_HOOK_HOST }} \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_HOOK_TOKEN }}"
+
+      # - name: Release to GitHub
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     github_server_url: https://github.com
+      #     repository: crutoboy/web_gen_arucomap
+      #     tag_name: ${{ github.event.release.tag_name }}
+      #     name: ${{ github.event.release.name }}
+      #     body: ${{ github.event.release.body }}
+      #     draft: ${{ github.event.release.draft }}
+      #     prerelease: ${{ github.event.release.prerelease }}
+      #     # files: dist.zip
+      #     # overwrite: true
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
