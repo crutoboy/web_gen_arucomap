@@ -4,8 +4,6 @@ on:
   release:
     types: [published]
 
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,6 +34,11 @@ jobs:
           files: dist.zip
         env:
           GITEA_TOKEN: ${{ secrets.GITEATOKEN }}
+
+      - name: Deploy
+        run: |
+          curl -X POST {{ secrets.DEPLOY_HOOK_HOST }} \
+            -H "Authorization: Bearer {{ secrets.DEPLOY_HOOK_TOKEN }}"
 
       # - name: Release to GitHub
       #   uses: softprops/action-gh-release@v2
