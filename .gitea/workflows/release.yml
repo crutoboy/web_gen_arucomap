@@ -37,8 +37,8 @@ jobs:
 
       - name: Deploy
         run: |
-          curl -X POST {{ secrets.DEPLOY_HOOK_HOST }} \
-            -H "Authorization: Bearer {{ secrets.DEPLOY_HOOK_TOKEN }}"
+          curl -X POST ${{ secrets.DEPLOY_HOOK_HOST }} \
+            -H "Authorization: Bearer ${{ secrets.DEPLOY_HOOK_TOKEN }}"
 
       # - name: Release to GitHub
       #   uses: softprops/action-gh-release@v2
