@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+import './dark_mode_changer.js'
 import { aruco_gen_str } from './genmap.js';
 
 document.getElementById('generate_button').addEventListener('click', () => {
