@@ -4,6 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 import './dark_mode_changer.js'
 import { aruco_gen_str } from './genmap.js';
+import { drawMapOnCanvas } from './wasm_aruco.js';
 
 document.getElementById('generate_button').addEventListener('click', () => {
     let length = document.getElementById('length').valueAsNumber
@@ -20,11 +21,13 @@ document.getElementById('generate_button').addEventListener('click', () => {
         length, markers_x, markers_y, dist_x, dist_y,
         first, x0, y0, bottom_left
     )
-    document.getElementById('test_out').innerHTML = map
+    document.getElementById('test_out').value = map
+
+    update_aruco_image()
 })
 
 document.getElementById('download_maptxt_button').addEventListener('click', () => {
-    let content = document.getElementById('test_out').innerHTML
+    let content = document.getElementById('test_out').value
     let filename = 'map.txt'
 
     let blob = new Blob([content], { type: "text/plain" })
@@ -40,3 +43,18 @@ document.getElementById('download_maptxt_button').addEventListener('click', () =
     document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
 })
+
+function update_aruco_image() {
+    let map = document.getElementById('test_out').value
+    let canvas = document.getElementById('image_topic')
+    const result = drawMapOnCanvas(canvas, map, {
+      dictionaryId: 2,
+      width: 600,
+      height: 500,
+      margin: 40,
+      drawAxis: false,
+    });
+}
+
+document.getElementById('test_out').addEventListener('change', update_aruco_image)
+
