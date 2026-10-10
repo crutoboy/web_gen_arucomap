@@ -4,6 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 import './dark_mode_changer.js'
 import { aruco_gen_str } from './genmap.js';
+import { generateMapImage, drawMapOnCanvas } from './wasm_aruco.js';
 
 document.getElementById('generate_button').addEventListener('click', () => {
     let length = document.getElementById('length').valueAsNumber
@@ -39,4 +40,16 @@ document.getElementById('download_maptxt_button').addEventListener('click', () =
 
     document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
+})
+
+document.getElementById('generate_aruco_image').addEventListener('click', () => {
+    let map = document.getElementById('test_out').innerHTML
+    let canvas = document.getElementById('image_topic')
+    const result = drawMapOnCanvas(canvas, map, {
+      dictionaryId: 2,
+      width: 600,
+      height: 500,
+      margin: 40,
+      drawAxis: false,
+    });
 })
