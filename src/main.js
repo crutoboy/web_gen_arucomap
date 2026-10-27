@@ -37,24 +37,48 @@ document.getElementById('download_maptxt_button').addEventListener('click', () =
     a.style = "display: none"
     a.href = url
     a.download = filename
-    document.body.appendChild(a)
-    a.click();
+    a.click()
 
-    document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
+})
+
+document.getElementById('download_topic_button').addEventListener('click', () => {
+    let canvas = document.getElementById('image_topic');
+    if (!canvas) return;
+
+    canvas.toBlob(blob => {
+        if (!blob) return
+        
+        let url = URL.createObjectURL(blob)
+        let a = document.createElement('a')
+        a.href = url;
+        a.download = 'aruco_topic.png'
+        a.click()
+
+        window.URL.revokeObjectURL(url)
+    }, 'image/png')
 })
 
 function update_aruco_image() {
     let map = document.getElementById('test_out').value
     let canvas = document.getElementById('image_topic')
+    let width = document.getElementById('topic_width').valueAsNumber
+    let height = document.getElementById('topic_height').valueAsNumber
+    let margin = document.getElementById('topic_margin').valueAsNumber
+    let drawAxis = document.getElementById('topic_drawAxis').checked
+
     const result = drawMapOnCanvas(canvas, map, {
       dictionaryId: 2,
-      width: 600,
-      height: 500,
-      margin: 40,
-      drawAxis: false,
+      width: width,
+      height: height,
+      margin: margin,
+      drawAxis: drawAxis,
     });
 }
 
 document.getElementById('test_out').addEventListener('change', update_aruco_image)
+document.getElementById('topic_width').addEventListener('change', update_aruco_image)
+document.getElementById('topic_height').addEventListener('change', update_aruco_image)
+document.getElementById('topic_margin').addEventListener('change', update_aruco_image)
+document.getElementById('topic_drawAxis').addEventListener('change', update_aruco_image)
 
