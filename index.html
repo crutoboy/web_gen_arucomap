@@ -26,52 +26,80 @@
 
     <div class="container">
 
-        <div class="d-inline-flex justify-content-between flex-wrap">
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="length">длина маркера в метрах: </label>
-                <input class="form-control" type="number" id="length" value="0.335">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="markers_x">кол-во маркеров по x: </label>
-                <input class="form-control" type="number" id="markers_x" value="10">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="markers_y">кол-во маркеров по y: </label>
-                <input class="form-control" type="number" id="markers_y" value="10">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="dist_x">расстояние между маркерами по x: </label>
-                <input class="form-control" type="number" id="dist_x" value="1">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="dist_y">расстояние между маркерами по x: </label>
-                <input class="form-control" type="number" id="dist_y" value="1">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="first">id первого маркера: </label>
-                <input class="form-control" type="number" id="first" value="0">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="x0">x первого маркера: </label>
-                <input class="form-control" type="number" id="x0" value="0">
-            </div>
-            <div class="m-2 flex-fill">
-                <label class="form-label" for="y0">y первого маркера: </label>
-                <input class="form-control" type="number" id="y0" value="0">
+        <div class="mb-5">
+            <h3>настройки генерации map.txt:</h3>
+            <div class="d-inline-flex justify-content-between flex-wrap">
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="length">длина маркера в метрах: </label>
+                    <input class="form-control" type="number" id="length" value="0.335">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="markers_x">кол-во маркеров по x: </label>
+                    <input class="form-control" type="number" id="markers_x" value="10">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="markers_y">кол-во маркеров по y: </label>
+                    <input class="form-control" type="number" id="markers_y" value="10">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="dist_x">расстояние между маркерами по x: </label>
+                    <input class="form-control" type="number" id="dist_x" value="1">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="dist_y">расстояние между маркерами по x: </label>
+                    <input class="form-control" type="number" id="dist_y" value="1">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="first">id первого маркера: </label>
+                    <input class="form-control" type="number" id="first" value="0">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="x0">x первого маркера: </label>
+                    <input class="form-control" type="number" id="x0" value="0">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="y0">y первого маркера: </label>
+                    <input class="form-control" type="number" id="y0" value="0">
+                </div>
+
             </div>
 
+            <div class="m-2">
+                <div>
+                    <label class="form-label">с какого угла начинается нумерация: </label>
+                </div>
+
+                <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                    <input type="radio" class="btn-check" name="is_bottom_left" id="top_left" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-primary" for="top_left">--top-left</label>
+                    <input type="radio" class="btn-check" name="is_bottom_left" id="bottom_left" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="bottom_left">--bottom-left</label>
+                </div>
+            </div>
         </div>
 
-        <div class="m-2">
-            <div>
-                <label class="form-label">с какого угла начинается нумерация: </label>
+        <div class="mb-5">
+            <h3>настройки изображения топика:</h3>
+            <div class="d-inline-flex justify-content-between flex-wrap">
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="topic_width">ширина: </label>
+                    <input class="form-control" type="number" id="topic_width" value="600">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="topic_height">высота: </label>
+                    <input class="form-control" type="number" id="topic_height" value="500">
+                </div>
+                <div class="m-2 flex-fill">
+                    <label class="form-label" for="topic_margin">отступ: </label>
+                    <input class="form-control" type="number" id="topic_margin" value="40">
+                </div>
             </div>
-
-            <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
-                <input type="radio" class="btn-check" name="is_bottom_left" id="top_left" autocomplete="off" checked>
-                <label class="btn btn-outline-primary" for="top_left">--top-left</label>
-                <input type="radio" class="btn-check" name="is_bottom_left" id="bottom_left" autocomplete="off">
-                <label class="btn btn-outline-primary" for="bottom_left">--bottom-left</label>
+            <div class="m-2">
+                <div class="m-2 flex-fill form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="topic_drawAxis">
+                    <label class="form-check-label" for="topic_drawAxis">отобразить координатную ось</label>
+                </div>
             </div>
         </div>
 
