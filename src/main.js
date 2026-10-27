@@ -37,11 +37,26 @@ document.getElementById('download_maptxt_button').addEventListener('click', () =
     a.style = "display: none"
     a.href = url
     a.download = filename
-    document.body.appendChild(a)
-    a.click();
+    a.click()
 
-    document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
+})
+
+document.getElementById('download_topic_button').addEventListener('click', () => {
+    let canvas = document.getElementById('image_topic');
+    if (!canvas) return;
+
+    canvas.toBlob(blob => {
+        if (!blob) return
+        
+        let url = URL.createObjectURL(blob)
+        let a = document.createElement('a')
+        a.href = url;
+        a.download = 'aruco_topic.png'
+        a.click()
+
+        window.URL.revokeObjectURL(url)
+    }, 'image/png')
 })
 
 function update_aruco_image() {
