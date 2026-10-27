@@ -62,14 +62,23 @@ document.getElementById('download_topic_button').addEventListener('click', () =>
 function update_aruco_image() {
     let map = document.getElementById('test_out').value
     let canvas = document.getElementById('image_topic')
+    let width = document.getElementById('topic_width').valueAsNumber
+    let height = document.getElementById('topic_height').valueAsNumber
+    let margin = document.getElementById('topic_margin').valueAsNumber
+    let drawAxis = document.getElementById('topic_drawAxis').checked
+
     const result = drawMapOnCanvas(canvas, map, {
       dictionaryId: 2,
-      width: 600,
-      height: 500,
-      margin: 40,
-      drawAxis: false,
+      width: width,
+      height: height,
+      margin: margin,
+      drawAxis: drawAxis,
     });
 }
 
 document.getElementById('test_out').addEventListener('change', update_aruco_image)
+document.getElementById('topic_width').addEventListener('change', update_aruco_image)
+document.getElementById('topic_height').addEventListener('change', update_aruco_image)
+document.getElementById('topic_margin').addEventListener('change', update_aruco_image)
+document.getElementById('topic_drawAxis').addEventListener('change', update_aruco_image)
 
