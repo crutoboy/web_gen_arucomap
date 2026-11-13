@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Генератор аруко карты</title>
     <link rel="icon" href="/favicon.webp" type="image/webp">
+    <style>
+        [data-bs-toggle="collapse"] {
+            cursor: pointer;
+        }
+
+        [data-bs-toggle="collapse"]:hover {
+            opacity: 0.85;
+        }
+
+        .collapse-chevron {
+            display: inline-block;
+            transition: transform 0.2s ease;
+            font-size: 0.85em;
+        }
+
+        [aria-expanded="false"] .collapse-chevron {
+            transform: rotate(-90deg);
+        }
+    </style>
 </head>
 
 <body>
@@ -89,8 +108,10 @@
         </div>
 
         <div class="mb-5">
-            <h3 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="true"
-                aria-controls="imageSettings">Настройки изображения топика:</h3>
+            <h4 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="true"
+                aria-controls="imageSettings">
+                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения топика:
+            </h4>
             <div class="collapse show" id="imageSettings">
                 <div class="d-inline-flex justify-content-between flex-wrap">
                     <div class="m-2 flex-fill">
@@ -116,8 +137,10 @@
         </div>
 
         <div class="mb-5">
-            <h3 role="button" data-bs-toggle="collapse" data-bs-target="#svgSettings" aria-expanded="false"
-                aria-controls="svgSettings">Настройки svg:</h3>
+            <h4 role="button" data-bs-toggle="collapse" data-bs-target="#svgSettings" aria-expanded="false"
+                aria-controls="svgSettings">
+                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки svg:
+            </h4>
             <div class="collapse" id="svgSettings">
 
                 <div class="d-inline-flex justify-content-between flex-wrap">
