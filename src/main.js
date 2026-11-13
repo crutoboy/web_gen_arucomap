@@ -49,7 +49,7 @@ document.getElementById('download_topic_button').addEventListener('click', () =>
 
     canvas.toBlob(blob => {
         if (!blob) return
-        
+
         let url = URL.createObjectURL(blob)
         let a = document.createElement('a')
         a.href = url;
@@ -61,26 +61,26 @@ document.getElementById('download_topic_button').addEventListener('click', () =>
 })
 
 document.getElementById('saveSVG').addEventListener('click', async () => {
-  let map = document.getElementById('test_out').value;
-  let svg_pxpm = document.getElementById('svg_pxpm').valueAsNumber;
-  let svg_margin = document.getElementById('svg_margin').valueAsNumber;
-  let svg_drawIDs = document.getElementById('svg_drawIDs').checked
-  let options = {
-    dictName: '4x4_1000',
-    markerW: 4,
-    markerH: 4,
-    pxPerMeter: svg_pxpm,
-    margin: svg_margin,
-    showIds: svg_drawIDs,
-  }
-  let svgStr = await generateMapSvgString(map, options);
-  let blob = new Blob([svgStr], { type: 'image/svg+xml' });
-  let url = URL.createObjectURL(blob);
-  let a = document.createElement('a');
-  a.href = url;
-  a.download = 'aruco_map.svg';
-  a.click();
-  URL.revokeObjectURL(url);
+    let map = document.getElementById('test_out').value;
+    let svg_pxpm = document.getElementById('svg_pxpm').valueAsNumber;
+    let svg_margin = document.getElementById('svg_margin').valueAsNumber;
+    let svg_drawIDs = document.getElementById('svg_drawIDs').checked
+    let options = {
+        dictName: '4x4_1000',
+        markerW: 4,
+        markerH: 4,
+        pxPerMeter: svg_pxpm,
+        margin: svg_margin,
+        showIds: svg_drawIDs,
+    }
+    let svgStr = await generateMapSvgString(map, options);
+    let blob = new Blob([svgStr], { type: 'image/svg+xml' });
+    let url = URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = 'aruco_map.svg';
+    a.click();
+    URL.revokeObjectURL(url);
 });
 
 function update_aruco_image() {
@@ -92,11 +92,11 @@ function update_aruco_image() {
     let drawAxis = document.getElementById('topic_drawAxis').checked
 
     let result = drawMapOnCanvas(canvas, map, {
-      dictionaryId: 2,
-      width: width,
-      height: height,
-      margin: margin,
-      drawAxis: drawAxis,
+        dictionaryId: 2,
+        width: width,
+        height: height,
+        margin: margin,
+        drawAxis: drawAxis,
     });
 }
 
