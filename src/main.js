@@ -24,7 +24,7 @@ document.getElementById('generate_button').addEventListener('click', () => {
     )
     document.getElementById('test_out').value = map
 
-    update_aruco_image()
+    update_aruco_preview()
 })
 
 document.getElementById('download_maptxt_button').addEventListener('click', () => {
@@ -100,9 +100,39 @@ function update_aruco_image() {
     });
 }
 
-document.getElementById('test_out').addEventListener('change', update_aruco_image)
-document.getElementById('topic_width').addEventListener('change', update_aruco_image)
-document.getElementById('topic_height').addEventListener('change', update_aruco_image)
-document.getElementById('topic_margin').addEventListener('change', update_aruco_image)
-document.getElementById('topic_drawAxis').addEventListener('change', update_aruco_image)
+async function update_aruco_svg() {
+    let container = document.getElementById('svg_preview');
+    let map = document.getElementById('test_out').value;
+    let svg_pxpm = document.getElementById('svg_pxpm').valueAsNumber;
+    let svg_margin = document.getElementById('svg_margin').valueAsNumber;
+    let svg_drawIDs = document.getElementById('svg_drawIDs').checked
+    let options = {
+        dictName: '4x4_1000',
+        markerW: 4,
+        markerH: 4,
+        pxPerMeter: svg_pxpm,
+        margin: svg_margin,
+        showIds: svg_drawIDs,
+    }
+    let svg = await generateMapSvg(map, options);
+
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+    svg.style.width = '100%';
+    svg.style.height = 'auto';
+    svg.style.display = 'block';
+
+    container.innerHTML = '';
+    container.appendChild(svg);
+}
+
+function update_aruco_preview() {
+    update_aruco_svg()
+}
+
+document.getElementById('test_out').addEventListener('change', update_aruco_preview)
+document.getElementById('topic_width').addEventListener('change', update_aruco_preview)
+document.getElementById('topic_height').addEventListener('change', update_aruco_preview)
+document.getElementById('topic_margin').addEventListener('change', update_aruco_preview)
+document.getElementById('topic_drawAxis').addEventListener('change', update_aruco_preview)
 
