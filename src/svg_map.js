@@ -1,7 +1,8 @@
 // Some functions is basically taken from https://github.com/okalachev/arucogen/blob/master/main.js
 
 let dict = null;
-let loadDict = fetch('/dict.json')
+const base = import.meta.env.BASE_URL || './';
+let loadDict = fetch(`${base}dict.json`)
   .then(r => r.json())
   .then(json => { dict = json; });
 
