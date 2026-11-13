@@ -189,7 +189,7 @@ export async function generateMapSvg(mapTxt, options = {}) {
             text.setAttribute('x', cx);
             text.setAttribute('y', y - 4);
             text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('font-size', Math.max(10, sizePx * 0.18));
+            text.setAttribute('font-size', Math.max(10, sizePx * 0.3));
             text.setAttribute('font-family', 'monospace');
             text.setAttribute('fill', '#333');
             text.textContent = m.id;

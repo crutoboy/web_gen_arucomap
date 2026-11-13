@@ -22,13 +22,13 @@ document.getElementById('generate_button').addEventListener('click', () => {
         length, markers_x, markers_y, dist_x, dist_y,
         first, x0, y0, bottom_left
     )
-    document.getElementById('test_out').value = map
+    document.getElementById('maptxt_preview').value = map
 
     update_aruco_preview()
 })
 
 document.getElementById('download_maptxt_button').addEventListener('click', () => {
-    let content = document.getElementById('test_out').value
+    let content = document.getElementById('maptxt_preview').value
     let filename = 'map.txt'
 
     let blob = new Blob([content], { type: "text/plain" })
@@ -61,7 +61,7 @@ document.getElementById('download_topic_button').addEventListener('click', () =>
 })
 
 document.getElementById('saveSVG').addEventListener('click', async () => {
-    let map = document.getElementById('test_out').value;
+    let map = document.getElementById('maptxt_preview').value;
     let svg_pxpm = document.getElementById('svg_pxpm').valueAsNumber;
     let svg_margin = document.getElementById('svg_margin').valueAsNumber;
     let svg_drawIDs = document.getElementById('svg_drawIDs').checked
@@ -84,7 +84,7 @@ document.getElementById('saveSVG').addEventListener('click', async () => {
 });
 
 function update_aruco_image() {
-    let map = document.getElementById('test_out').value
+    let map = document.getElementById('maptxt_preview').value
     let canvas = document.getElementById('image_topic')
     let width = document.getElementById('topic_width').valueAsNumber
     let height = document.getElementById('topic_height').valueAsNumber
@@ -102,7 +102,7 @@ function update_aruco_image() {
 
 async function update_aruco_svg() {
     let container = document.getElementById('svg_preview');
-    let map = document.getElementById('test_out').value;
+    let map = document.getElementById('maptxt_preview').value;
     let svg_pxpm = document.getElementById('svg_pxpm').valueAsNumber;
     let svg_margin = document.getElementById('svg_margin').valueAsNumber;
     let svg_drawIDs = document.getElementById('svg_drawIDs').checked
@@ -130,9 +130,13 @@ function update_aruco_preview() {
     update_aruco_svg()
 }
 
-document.getElementById('test_out').addEventListener('change', update_aruco_preview)
+document.getElementById('maptxt_preview').addEventListener('input', update_aruco_preview)
+
 document.getElementById('topic_width').addEventListener('change', update_aruco_preview)
 document.getElementById('topic_height').addEventListener('change', update_aruco_preview)
 document.getElementById('topic_margin').addEventListener('change', update_aruco_preview)
 document.getElementById('topic_drawAxis').addEventListener('change', update_aruco_preview)
 
+document.getElementById('svg_pxpm').addEventListener('change', update_aruco_preview)
+document.getElementById('svg_margin').addEventListener('change', update_aruco_preview)
+document.getElementById('svg_drawIDs').addEventListener('change', update_aruco_preview)
