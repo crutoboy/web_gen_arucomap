@@ -1,3 +1,6 @@
+// This code is basically taken from https://github.com/CopterExpress/clover/blob/master/aruco_pose/src/genmap.py
+// And rewrite on js
+
 export function aruco_gen_str(
     length, markers_x, markers_y, dist_x, dist_y,
     first=0, x0=0, y0=0, bottom_left=false

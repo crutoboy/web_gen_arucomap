@@ -1,3 +1,5 @@
+// This code is basically taken from https://github.com/okalachev/arucogen/blob/master/main.js
+
 function generateMarkerSvg(width, height, bits, fixPdfArtifacts = true) {
 	var svg = document.createElement('svg');
 	svg.setAttribute('viewBox', '0 0 ' + (width + 2) + ' ' + (height + 2));
