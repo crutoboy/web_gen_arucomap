@@ -7,13 +7,14 @@ let loadDict = fetch('/dict.json')
 
 
 function generateMarkerSvg(width, height, bits, fixPdfArtifacts = true) {
-    let svg = document.createElement('svg');
-    svg.setAttribute('viewBox', '0 0 ' + (width + 2) + ' ' + (height + 2));
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    let NS = 'http://www.w3.org/2000/svg';
+    let svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', `0 0 ${width + 2} ${height + 2}`);
+    svg.setAttribute('xmlns', NS);
     svg.setAttribute('shape-rendering', 'crispEdges');
 
     // Background rect
-    let rect = document.createElement('rect');
+    let rect = document.createElementNS(NS, 'rect');
     rect.setAttribute('x', 0);
     rect.setAttribute('y', 0);
     rect.setAttribute('width', width + 2);
@@ -27,7 +28,7 @@ function generateMarkerSvg(width, height, bits, fixPdfArtifacts = true) {
             let white = bits[i * height + j];
             if (!white) continue;
 
-            let pixel = document.createElement('rect');;
+            let pixel = document.createElementNS(NS, 'rect');
             pixel.setAttribute('width', 1);
             pixel.setAttribute('height', 1);
             pixel.setAttribute('x', j + 1);
@@ -42,7 +43,7 @@ function generateMarkerSvg(width, height, bits, fixPdfArtifacts = true) {
             }
 
             if ((i < height - 1) && (bits[(i + 1) * height + j])) {
-                let pixel2 = document.createElement('rect');;
+                let pixel2 = document.createElementNS(NS, 'rect');
                 pixel2.setAttribute('width', 1);
                 pixel2.setAttribute('height', 1.5);
                 pixel2.setAttribute('x', j + 1);
