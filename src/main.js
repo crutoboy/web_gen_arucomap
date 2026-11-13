@@ -5,6 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import './dark_mode_changer.js'
 import { aruco_gen_str } from './genmap.js';
 import { drawMapOnCanvas } from './wasm_aruco.js';
+import { generateMapSvg, generateMapSvgString } from './svg_map';
 
 document.getElementById('generate_button').addEventListener('click', () => {
     let length = document.getElementById('length').valueAsNumber
@@ -59,6 +60,18 @@ document.getElementById('download_topic_button').addEventListener('click', () =>
     }, 'image/png')
 })
 
+document.getElementById('saveSVG').addEventListener('click', async () => {
+  let map = document.getElementById('test_out').value;
+  let svgStr = await generateMapSvgString(map);
+  let blob = new Blob([svgStr], { type: 'image/svg+xml' });
+  let url = URL.createObjectURL(blob);
+  let a = document.createElement('a');
+  a.href = url;
+  a.download = 'aruco_map.svg';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
 function update_aruco_image() {
     let map = document.getElementById('test_out').value
     let canvas = document.getElementById('image_topic')
@@ -67,7 +80,7 @@ function update_aruco_image() {
     let margin = document.getElementById('topic_margin').valueAsNumber
     let drawAxis = document.getElementById('topic_drawAxis').checked
 
-    const result = drawMapOnCanvas(canvas, map, {
+    let result = drawMapOnCanvas(canvas, map, {
       dictionaryId: 2,
       width: width,
       height: height,
