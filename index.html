@@ -28,7 +28,7 @@
     <div class="container mb-5">
         <h2 class="mb-2">Генератор ArUco-карты для Clover</h2>
         <p class="text-body-secondary mb-0">
-            Веб-версия <code>genmap.py</code>. Позволяет быстро создать файл <code>map.txt</code> 
+            Веб-версия <code>genmap.py</code>. Позволяет быстро создать файл <code>map.txt</code>
             и сразу увидеть, как карта будет выглядеть в топике <code>/aruco_map/image</code>.
         </p>
     </div>
@@ -89,26 +89,54 @@
         </div>
 
         <div class="mb-5">
-            <h3>Настройки изображения топика:</h3>
-            <div class="d-inline-flex justify-content-between flex-wrap">
-                <div class="m-2 flex-fill">
-                    <label class="form-label" for="topic_width">ширина: </label>
-                    <input class="form-control" type="number" id="topic_width" value="600">
+            <h3 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="true"
+                aria-controls="imageSettings">Настройки изображения топика:</h3>
+            <div class="collapse show" id="imageSettings">
+                <div class="d-inline-flex justify-content-between flex-wrap">
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="topic_width">ширина: </label>
+                        <input class="form-control" type="number" id="topic_width" value="600">
+                    </div>
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="topic_height">высота: </label>
+                        <input class="form-control" type="number" id="topic_height" value="500">
+                    </div>
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="topic_margin">отступ: </label>
+                        <input class="form-control" type="number" id="topic_margin" value="40">
+                    </div>
                 </div>
-                <div class="m-2 flex-fill">
-                    <label class="form-label" for="topic_height">высота: </label>
-                    <input class="form-control" type="number" id="topic_height" value="500">
-                </div>
-                <div class="m-2 flex-fill">
-                    <label class="form-label" for="topic_margin">отступ: </label>
-                    <input class="form-control" type="number" id="topic_margin" value="40">
+                <div class="m-2">
+                    <div class="m-2 flex-fill form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="topic_drawAxis">
+                        <label class="form-check-label" for="topic_drawAxis">отобразить координатную ось</label>
+                    </div>
                 </div>
             </div>
-            <div class="m-2">
-                <div class="m-2 flex-fill form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="topic_drawAxis">
-                    <label class="form-check-label" for="topic_drawAxis">отобразить координатную ось</label>
+        </div>
+
+        <div class="mb-5">
+            <h3 role="button" data-bs-toggle="collapse" data-bs-target="#svgSettings" aria-expanded="false"
+                aria-controls="svgSettings">Настройки svg:</h3>
+            <div class="collapse" id="svgSettings">
+
+                <div class="d-inline-flex justify-content-between flex-wrap">
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="svg_pxpm">масштаб (пикселей на метр): </label>
+                        <input class="form-control" type="number" id="svg_pxpm" value="200">
+                    </div>
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="svg_margin">отсутпы: </label>
+                        <input class="form-control" type="number" id="svg_margin" value="40">
+                    </div>
                 </div>
+                <div class="m-2">
+                    <div class="m-2 flex-fill form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="svg_drawIDs">
+                        <label class="form-check-label" for="svg_drawIDs">отобразить id меток</label>
+                    </div>
+                </div>
+
             </div>
         </div>
 

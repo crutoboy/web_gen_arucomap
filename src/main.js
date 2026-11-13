@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import './dark_mode_changer.js'
 import { aruco_gen_str } from './genmap.js';
@@ -62,7 +62,18 @@ document.getElementById('download_topic_button').addEventListener('click', () =>
 
 document.getElementById('saveSVG').addEventListener('click', async () => {
   let map = document.getElementById('test_out').value;
-  let svgStr = await generateMapSvgString(map);
+  let svg_pxpm = document.getElementById('svg_pxpm').valueAsNumber;
+  let svg_margin = document.getElementById('svg_margin').valueAsNumber;
+  let svg_drawIDs = document.getElementById('svg_drawIDs').checked
+  let options = {
+    dictName: '4x4_1000',
+    markerW: 4,
+    markerH: 4,
+    pxPerMeter: svg_pxpm,
+    margin: svg_margin,
+    showIds: svg_drawIDs,
+  }
+  let svgStr = await generateMapSvgString(map, options);
   let blob = new Blob([svgStr], { type: 'image/svg+xml' });
   let url = URL.createObjectURL(blob);
   let a = document.createElement('a');
