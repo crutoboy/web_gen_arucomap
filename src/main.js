@@ -88,15 +88,21 @@ document.getElementById("preview_group").addEventListener('change', () => {
     let is_preview_svg = document.getElementById('preview_svg_btn').checked
     let preview_png = document.getElementById('image_topic')
     let preview_svg = document.getElementById('svg_preview')
+    let download_png_btn = document.getElementById('download_topic_button')
+    let download_svg_btn = document.getElementById('saveSVG')
 
     if (is_preview_png) {
         preview_png.style.display = 'block'
+        download_png_btn.disabled = false
         preview_svg.style.display = 'none'
+        download_svg_btn.disabled = true
     }
 
     if (is_preview_svg) {
         preview_png.style.display = 'none'
+        download_png_btn.disabled = true
         preview_svg.style.display = 'block'
+        download_svg_btn.disabled = false
     }
 
     update_aruco_preview()
