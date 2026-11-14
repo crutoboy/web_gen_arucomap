@@ -83,6 +83,25 @@ document.getElementById('saveSVG').addEventListener('click', async () => {
     URL.revokeObjectURL(url);
 });
 
+document.getElementById("preview_group").addEventListener('change', () => {
+    let is_preview_png = document.getElementById('preview_png_btn').checked
+    let is_preview_svg = document.getElementById('preview_svg_btn').checked
+    let preview_png = document.getElementById('image_topic')
+    let preview_svg = document.getElementById('svg_preview')
+
+    if (is_preview_png) {
+        preview_png.style.display = 'block'
+        preview_svg.style.display = 'none'
+    }
+
+    if (is_preview_svg) {
+        preview_png.style.display = 'none'
+        preview_svg.style.display = 'block'
+    }
+
+    update_aruco_preview()
+})
+
 function update_aruco_image() {
     let map = document.getElementById('maptxt_preview').value
     let canvas = document.getElementById('image_topic')
@@ -127,7 +146,11 @@ async function update_aruco_svg() {
 }
 
 function update_aruco_preview() {
-    update_aruco_svg()
+    let is_preview_png = document.getElementById('preview_png_btn').checked
+    let is_preview_svg = document.getElementById('preview_svg_btn').checked
+
+    if (is_preview_png) update_aruco_image()
+    if (is_preview_svg) update_aruco_svg()
 }
 
 document.getElementById('maptxt_preview').addEventListener('input', update_aruco_preview)

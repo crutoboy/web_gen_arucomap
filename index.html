@@ -97,12 +97,28 @@
                     <label class="form-label">с какого угла начинается нумерация: </label>
                 </div>
 
-                <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
                     <input type="radio" class="btn-check" name="is_bottom_left" id="top_left" autocomplete="off"
                         checked>
                     <label class="btn btn-outline-primary" for="top_left">--top-left</label>
                     <input type="radio" class="btn-check" name="is_bottom_left" id="bottom_left" autocomplete="off">
                     <label class="btn btn-outline-primary" for="bottom_left">--bottom-left</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <div class="m-2">
+                <div>
+                    <label class="form-label">формат предпросмотра: </label>
+                </div>
+
+                <div class="btn-group" role="group" aria-label="Vertical radio toggle button group" id="preview_group">
+                    <input type="radio" class="btn-check" name="preview_type" id="preview_png_btn" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="preview_png_btn">.png</label>
+                    <input type="radio" class="btn-check" name="preview_type" id="preview_svg_btn" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-primary" for="preview_svg_btn">.svg</label>
                 </div>
             </div>
         </div>
