@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Генератор аруко карты</title>
     <link rel="icon" href="/favicon.webp" type="image/webp">
+    <style>
+        [data-bs-toggle="collapse"] {
+            cursor: pointer;
+        }
+
+        [data-bs-toggle="collapse"]:hover {
+            opacity: 0.85;
+        }
+
+        .collapse-chevron {
+            display: inline-block;
+            transition: transform 0.2s ease;
+            font-size: 0.85em;
+        }
+
+        [aria-expanded="false"] .collapse-chevron {
+            transform: rotate(-90deg);
+        }
+    </style>
 </head>
 
 <body>
@@ -28,7 +47,7 @@
     <div class="container mb-5">
         <h2 class="mb-2">Генератор ArUco-карты для Clover</h2>
         <p class="text-body-secondary mb-0">
-            Веб-версия <code>genmap.py</code>. Позволяет быстро создать файл <code>map.txt</code> 
+            Веб-версия <code>genmap.py</code>. Позволяет быстро создать файл <code>map.txt</code>
             и сразу увидеть, как карта будет выглядеть в топике <code>/aruco_map/image</code>.
         </p>
     </div>
@@ -55,7 +74,7 @@
                     <input class="form-control" type="number" id="dist_x" value="1">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="dist_y">расстояние между маркерами по x: </label>
+                    <label class="form-label" for="dist_y">расстояние между маркерами по y: </label>
                     <input class="form-control" type="number" id="dist_y" value="1">
                 </div>
                 <div class="m-2 flex-fill">
@@ -78,7 +97,7 @@
                     <label class="form-label">с какого угла начинается нумерация: </label>
                 </div>
 
-                <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
                     <input type="radio" class="btn-check" name="is_bottom_left" id="top_left" autocomplete="off"
                         checked>
                     <label class="btn btn-outline-primary" for="top_left">--top-left</label>
@@ -89,42 +108,91 @@
         </div>
 
         <div class="mb-5">
-            <h3>Настройки изображения топика:</h3>
-            <div class="d-inline-flex justify-content-between flex-wrap">
-                <div class="m-2 flex-fill">
-                    <label class="form-label" for="topic_width">ширина: </label>
-                    <input class="form-control" type="number" id="topic_width" value="600">
+            <div class="m-2">
+                <div>
+                    <label class="form-label">формат предпросмотра: </label>
                 </div>
-                <div class="m-2 flex-fill">
-                    <label class="form-label" for="topic_height">высота: </label>
-                    <input class="form-control" type="number" id="topic_height" value="500">
-                </div>
-                <div class="m-2 flex-fill">
-                    <label class="form-label" for="topic_margin">отступ: </label>
-                    <input class="form-control" type="number" id="topic_margin" value="40">
+
+                <div class="btn-group" role="group" aria-label="Vertical radio toggle button group" id="preview_group">
+                    <input type="radio" class="btn-check" name="preview_type" id="preview_png_btn" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="preview_png_btn">.png</label>
+                    <input type="radio" class="btn-check" name="preview_type" id="preview_svg_btn" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-primary" for="preview_svg_btn">.svg</label>
                 </div>
             </div>
-            <div class="m-2">
-                <div class="m-2 flex-fill form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="topic_drawAxis">
-                    <label class="form-check-label" for="topic_drawAxis">отобразить координатную ось</label>
+        </div>
+
+        <div class="mb-5">
+            <h4 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="false"
+                aria-controls="imageSettings">
+                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения в png:
+            </h4>
+            <div class="collapse" id="imageSettings">
+                <div class="d-inline-flex justify-content-between flex-wrap">
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="topic_width">ширина в пикселях: </label>
+                        <input class="form-control" type="number" id="topic_width" value="600">
+                    </div>
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="topic_height">высота в пикселях: </label>
+                        <input class="form-control" type="number" id="topic_height" value="600">
+                    </div>
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="topic_margin">отступ: </label>
+                        <input class="form-control" type="number" id="topic_margin" value="40">
+                    </div>
                 </div>
+                <div class="m-2">
+                    <div class="m-2 flex-fill form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="topic_drawAxis">
+                        <label class="form-check-label" for="topic_drawAxis">отобразить координатную ось</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <h4 role="button" data-bs-toggle="collapse" data-bs-target="#svgSettings" aria-expanded="false"
+                aria-controls="svgSettings">
+                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения в svg:
+            </h4>
+            <div class="collapse" id="svgSettings">
+
+                <div class="d-inline-flex justify-content-between flex-wrap">
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="svg_pxpm">масштаб (пикселей на метр): </label>
+                        <input class="form-control" type="number" id="svg_pxpm" value="200">
+                    </div>
+                    <div class="m-2 flex-fill">
+                        <label class="form-label" for="svg_margin">отсутп: </label>
+                        <input class="form-control" type="number" id="svg_margin" value="40">
+                    </div>
+                </div>
+                <div class="m-2">
+                    <div class="m-2 flex-fill form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="svg_drawIDs">
+                        <label class="form-check-label" for="svg_drawIDs">отобразить id меток</label>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <div class="m-2">
-            <button id="generate_button" class="btn btn-primary">сгененрировать карту</button>
+            <button id="generate_button" class="btn btn-primary">сгенерировать карту</button>
             <button id="download_maptxt_button" class="btn btn-primary">скачать map.txt</button>
-            <button id="download_topic_button" class="btn btn-primary">скачать топик</button>
-            <button id="saveSVG" class="btn btn-primary">скачать svg</button>
+            <button id="download_topic_button" class="btn btn-primary" disabled>скачать как .png</button>
+            <button id="saveSVG" class="btn btn-primary">скачать как .svg</button>
         </div>
 
         <div class="m-2 row">
             <div class="col-12 col-md-6">
-                <textarea class="form-control" id="test_out" rows="20" wrap="off"></textarea>
+                <textarea class="form-control" id="maptxt_preview" rows="20" wrap="off"></textarea>
             </div>
             <div class="col-12 col-md-6">
-                <canvas id="image_topic" class="w-100"></canvas>
+                <canvas id="image_topic" class="w-100" style="display: none;"></canvas>
+                <div id="svg_preview" class="w-100" style="min-height: 300px;"></div>
             </div>
         </div>
     </div>
@@ -132,7 +200,7 @@
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
-                <a href="https://github.com/crutoboy/web_gen_arucomap"
+                <a href="https://github.com/crutoboy/web_gen_arucomap" target="_blank"
                     class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                     <i class="bi bi-github"></i>
                     <span class="mb-3 mb-md-0 text-body-secondary">© crutoboy</span>
