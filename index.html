@@ -74,7 +74,7 @@
                     <input class="form-control" type="number" id="dist_x" value="1">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="dist_y">расстояние между маркерами по x: </label>
+                    <label class="form-label" for="dist_y">расстояние между маркерами по y: </label>
                     <input class="form-control" type="number" id="dist_y" value="1">
                 </div>
                 <div class="m-2 flex-fill">
@@ -124,19 +124,19 @@
         </div>
 
         <div class="mb-5">
-            <h4 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="true"
+            <h4 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="false"
                 aria-controls="imageSettings">
-                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения топика:
+                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения в png:
             </h4>
-            <div class="collapse show" id="imageSettings">
+            <div class="collapse" id="imageSettings">
                 <div class="d-inline-flex justify-content-between flex-wrap">
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="topic_width">ширина: </label>
+                        <label class="form-label" for="topic_width">ширина в пикселях: </label>
                         <input class="form-control" type="number" id="topic_width" value="600">
                     </div>
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="topic_height">высота: </label>
-                        <input class="form-control" type="number" id="topic_height" value="500">
+                        <label class="form-label" for="topic_height">высота в пикселях: </label>
+                        <input class="form-control" type="number" id="topic_height" value="600">
                     </div>
                     <div class="m-2 flex-fill">
                         <label class="form-label" for="topic_margin">отступ: </label>
@@ -155,7 +155,7 @@
         <div class="mb-5">
             <h4 role="button" data-bs-toggle="collapse" data-bs-target="#svgSettings" aria-expanded="false"
                 aria-controls="svgSettings">
-                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки svg:
+                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения в svg:
             </h4>
             <div class="collapse" id="svgSettings">
 
@@ -165,7 +165,7 @@
                         <input class="form-control" type="number" id="svg_pxpm" value="200">
                     </div>
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="svg_margin">отсутпы: </label>
+                        <label class="form-label" for="svg_margin">отсутп: </label>
                         <input class="form-control" type="number" id="svg_margin" value="40">
                     </div>
                 </div>
@@ -180,10 +180,10 @@
         </div>
 
         <div class="m-2">
-            <button id="generate_button" class="btn btn-primary">сгененрировать карту</button>
+            <button id="generate_button" class="btn btn-primary">сгенерировать карту</button>
             <button id="download_maptxt_button" class="btn btn-primary">скачать map.txt</button>
-            <button id="download_topic_button" class="btn btn-primary">скачать топик</button>
-            <button id="saveSVG" class="btn btn-primary">скачать svg</button>
+            <button id="download_topic_button" class="btn btn-primary">скачать как .png</button>
+            <button id="saveSVG" class="btn btn-primary">скачать как .svg</button>
         </div>
 
         <div class="m-2 row">
