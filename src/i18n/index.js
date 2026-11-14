@@ -65,7 +65,7 @@ export function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.dataset.i18n;
     if (key) {
-      el.textContent = t(key);
+      el.innerHTML = t(key);
     }
   });
 
