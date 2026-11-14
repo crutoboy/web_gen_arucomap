@@ -175,10 +175,14 @@ export async function generateMapSvg(mapTxt, options = {}) {
         let y = cy - sizePx / 2;
 
         let angleDeg = -(m.rot_z || 0) * 180 / Math.PI;
+        let s = sizePx / (markerW + 2);
 
         // Клонируем содержимое маркера и масштабируем
         let markerGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        markerGroup.setAttribute('transform', `translate(${x}, ${y}) rotate(${angleDeg}) scale(${sizePx / (markerW + 2)}) translate(${-(markerW + 2) / 2}, ${-(markerW + 2) / 2})`);
+        markerGroup.setAttribute(
+            'transform',
+            `translate(${cx}, ${cy}) rotate(${angleDeg}) scale(${s}) translate(${-(markerW + 2) / 2}, ${-(markerW + 2) / 2})`
+        );
 
         // Переносим детей из markerSvg
         while (markerSvg.firstChild) {
