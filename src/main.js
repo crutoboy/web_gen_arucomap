@@ -5,7 +5,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './dark_mode_changer.js'
 import { aruco_gen_str } from './genmap.js';
 import { drawMapOnCanvas } from './wasm_aruco.js';
-import { generateMapSvg, generateMapSvgString } from './svg_map';
+import { generateMapSvg, generateMapSvgString } from './svg_map.js';
+import { initI18n } from './i18n/index.js';
 
 document.getElementById('generate_button').addEventListener('click', () => {
     let length = document.getElementById('length').valueAsNumber
@@ -169,3 +170,5 @@ document.getElementById('topic_drawAxis').addEventListener('change', update_aruc
 document.getElementById('svg_pxpm').addEventListener('change', update_aruco_preview)
 document.getElementById('svg_margin').addEventListener('change', update_aruco_preview)
 document.getElementById('svg_drawIDs').addEventListener('change', update_aruco_preview)
+
+initI18n()

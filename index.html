@@ -30,6 +30,9 @@
 <body>
     <div class="shadow-sm mb-3">
         <header class="container d-flex justify-content-end align-items-center py-3">
+            <div>
+                <select id="langSelect" class="form-select form-select-sm w-auto"></select>
+            </div>
             <div class="form-check form-switch d-flex p-2">
                 <div>
                     <i class="bi bi-sun"></i>
@@ -45,8 +48,8 @@
     </div>
 
     <div class="container mb-5">
-        <h2 class="mb-2">Генератор ArUco-карты для Clover</h2>
-        <p class="text-body-secondary mb-0">
+        <h2 class="mb-2" data-i18n="title_on_page">Генератор ArUco-карты для Clover</h2>
+        <p class="text-body-secondary mb-0" data-i18n="discription_project">
             Веб-версия <code>genmap.py</code>. Позволяет быстро создать файл <code>map.txt</code>
             и сразу увидеть, как карта будет выглядеть в топике <code>/aruco_map/image</code>.
         </p>
@@ -55,38 +58,38 @@
     <div class="container">
 
         <div class="mb-5">
-            <h3>Настройки генерации map.txt:</h3>
+            <h3 data-i18n="settings_maptxt_title">Настройки генерации map.txt:</h3>
             <div class="d-inline-flex justify-content-between flex-wrap">
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="length">длина маркера в метрах: </label>
+                    <label class="form-label" for="length" data-i18n="settings_maptxt_length">длина маркера в метрах: </label>
                     <input class="form-control" type="number" id="length" value="0.335">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="markers_x">кол-во маркеров по x: </label>
+                    <label class="form-label" for="markers_x" data-i18n="settings_maptxt_markers_x">кол-во маркеров по x: </label>
                     <input class="form-control" type="number" id="markers_x" value="10">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="markers_y">кол-во маркеров по y: </label>
+                    <label class="form-label" for="markers_y" data-i18n="settings_maptxt_markers_y">кол-во маркеров по y: </label>
                     <input class="form-control" type="number" id="markers_y" value="10">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="dist_x">расстояние между маркерами по x: </label>
+                    <label class="form-label" for="dist_x" data-i18n="settings_maptxt_dist_x">расстояние между маркерами по x: </label>
                     <input class="form-control" type="number" id="dist_x" value="1">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="dist_y">расстояние между маркерами по y: </label>
+                    <label class="form-label" for="dist_y" data-i18n="settings_maptxt_dist_y">расстояние между маркерами по y: </label>
                     <input class="form-control" type="number" id="dist_y" value="1">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="first">id первого маркера: </label>
+                    <label class="form-label" for="first" data-i18n="settings_maptxt_first">id первого маркера: </label>
                     <input class="form-control" type="number" id="first" value="0">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="x0">x первого маркера: </label>
+                    <label class="form-label" for="x0" data-i18n="settings_maptxt_x0">x первого маркера: </label>
                     <input class="form-control" type="number" id="x0" value="0">
                 </div>
                 <div class="m-2 flex-fill">
-                    <label class="form-label" for="y0">y первого маркера: </label>
+                    <label class="form-label" for="y0" data-i18n="settings_maptxt_y0">y первого маркера: </label>
                     <input class="form-control" type="number" id="y0" value="0">
                 </div>
 
@@ -94,7 +97,7 @@
 
             <div class="m-2">
                 <div>
-                    <label class="form-label">с какого угла начинается нумерация: </label>
+                    <label class="form-label" data-i18n="settings_maptxt_start_angle">с какого угла начинается нумерация: </label>
                 </div>
 
                 <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
@@ -110,7 +113,7 @@
         <div class="mb-5">
             <div class="m-2">
                 <div>
-                    <label class="form-label">формат предпросмотра: </label>
+                    <label class="form-label" data-i18n="settings_preview_format">формат предпросмотра: </label>
                 </div>
 
                 <div class="btn-group" role="group" aria-label="Vertical radio toggle button group" id="preview_group">
@@ -126,27 +129,27 @@
         <div class="mb-5">
             <h4 role="button" data-bs-toggle="collapse" data-bs-target="#imageSettings" aria-expanded="false"
                 aria-controls="imageSettings">
-                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения в png:
+                <i class="bi bi-chevron-down collapse-chevron"></i> <span data-i18n="settings_png_title">Настройки изображения в png:</span>
             </h4>
             <div class="collapse" id="imageSettings">
                 <div class="d-inline-flex justify-content-between flex-wrap">
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="topic_width">ширина в пикселях: </label>
+                        <label class="form-label" for="topic_width" data-i18n="settings_png_width">ширина в пикселях: </label>
                         <input class="form-control" type="number" id="topic_width" value="600">
                     </div>
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="topic_height">высота в пикселях: </label>
+                        <label class="form-label" for="topic_height" data-i18n="settings_png_height">высота в пикселях: </label>
                         <input class="form-control" type="number" id="topic_height" value="600">
                     </div>
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="topic_margin">отступ: </label>
+                        <label class="form-label" for="topic_margin" data-i18n="settings_png_margin">отступ: </label>
                         <input class="form-control" type="number" id="topic_margin" value="40">
                     </div>
                 </div>
                 <div class="m-2">
                     <div class="m-2 flex-fill form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="topic_drawAxis">
-                        <label class="form-check-label" for="topic_drawAxis">отобразить координатную ось</label>
+                        <label class="form-check-label" for="topic_drawAxis" data-i18n="settings_png_drawAxis">отобразить координатную ось</label>
                     </div>
                 </div>
             </div>
@@ -155,24 +158,24 @@
         <div class="mb-5">
             <h4 role="button" data-bs-toggle="collapse" data-bs-target="#svgSettings" aria-expanded="false"
                 aria-controls="svgSettings">
-                <i class="bi bi-chevron-down collapse-chevron"></i> Настройки изображения в svg:
+                <i class="bi bi-chevron-down collapse-chevron"></i> <span data-i18n="settings_svg_title">Настройки изображения в svg:</span>
             </h4>
             <div class="collapse" id="svgSettings">
 
                 <div class="d-inline-flex justify-content-between flex-wrap">
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="svg_pxpm">масштаб (пикселей на метр): </label>
+                        <label class="form-label" for="svg_pxpm" data-i18n="settings_svg_scale">масштаб (пикселей на метр): </label>
                         <input class="form-control" type="number" id="svg_pxpm" value="200">
                     </div>
                     <div class="m-2 flex-fill">
-                        <label class="form-label" for="svg_margin">отсутп: </label>
+                        <label class="form-label" for="svg_margin" data-i18n="settings_svg_margin">отсутп: </label>
                         <input class="form-control" type="number" id="svg_margin" value="40">
                     </div>
                 </div>
                 <div class="m-2">
                     <div class="m-2 flex-fill form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="svg_drawIDs">
-                        <label class="form-check-label" for="svg_drawIDs">отобразить id меток</label>
+                        <label class="form-check-label" for="svg_drawIDs" data-i18n="settings_svg_drawIDs">отобразить id меток</label>
                     </div>
                 </div>
 
@@ -180,10 +183,10 @@
         </div>
 
         <div class="m-2">
-            <button id="generate_button" class="btn btn-primary">сгенерировать карту</button>
-            <button id="download_maptxt_button" class="btn btn-primary">скачать map.txt</button>
-            <button id="download_topic_button" class="btn btn-primary" disabled>скачать как .png</button>
-            <button id="saveSVG" class="btn btn-primary">скачать как .svg</button>
+            <button id="generate_button" class="btn btn-primary" data-i18n="contol_genmap">сгенерировать карту</button>
+            <button id="download_maptxt_button" class="btn btn-primary" data-i18n="contol_download_maptxt">скачать map.txt</button>
+            <button id="download_topic_button" class="btn btn-primary" data-i18n="contol_download_png" disabled>скачать как .png</button>
+            <button id="saveSVG" class="btn btn-primary" data-i18n="contol_download_svg">скачать как .svg</button>
         </div>
 
         <div class="m-2 row">
